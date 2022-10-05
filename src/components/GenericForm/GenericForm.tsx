@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
-import { Item } from "../../types";
+import { Exp } from "../../types/index";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import domain from "../../config/domain";
@@ -15,7 +15,7 @@ import DateInput from "./DateInput";
 
 interface GenericFormProps {
   closeForm: () => void;
-  item: Item;
+  item: Exp;
   refresh: () => void;
 }
 
@@ -28,7 +28,7 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const [itemState, setItemState] = useState<Item>(item);
+  const [itemState, setItemState] = useState<Exp>(item);
 
   const fieldsArray = fieldsConfig.get(type);
 

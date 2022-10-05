@@ -7,7 +7,7 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import ReqForm from "./ReqForm";
 import GenericForm from "./components/GenericForm/GenericForm";
-import { Item } from "./types";
+import { Exp } from "./types";
 
 const style = {
   position: "absolute" as "absolute",
@@ -66,7 +66,7 @@ export default function App() {
               {/* <ReqForm closeModal={handleClose} /> */}
               <GenericForm
                 closeForm={handleClose}
-                item={{} as Item}
+                item={{} as Exp}
                 refresh={() => {}}
               />
             </Box>
