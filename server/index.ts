@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import mongoose, { ConnectOptions } from "mongoose";
 import cookieParser from "cookie-parser";
 
+import Exp from "./models/expModel";
+
 const app = express();
 const port = process.env.PORT || 3001;
 

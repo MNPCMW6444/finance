@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
-const expSchema = new mongoose.Schema({
+
+const expSchema = new mongoose.Schema(
+  {
     amount: Number,
     isOneTime: Boolean,
     oneTimeDate: Date,
@@ -11,8 +11,12 @@ const expSchema = new mongoose.Schema({
     department: String,
     more: String,
     invoice: { type: String, required: false },
-}, {
+  },
+  {
     timestamps: true,
-});
+  }
+);
+
 const exp = mongoose.model("fin", expSchema);
-exports.default = exp;
+
+export default exp;
