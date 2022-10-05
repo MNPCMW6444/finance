@@ -1,7 +1,7 @@
 {
-  "name": "neurobica-landingpage-server",
+  "name": "neurobica-finance-server",
   "version": "1.0.0",
-  "description": "Neurobica landingpage Main Server",
+  "description": "Neurobica Finance Main Server",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
