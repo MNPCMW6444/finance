@@ -1,0 +1,41 @@
+{
+  "name": "neurobica-landingpage-server",
+  "version": "1.0.0",
+  "description": "Neurobica landingpage Main Server",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node index.ts",
+    "dev": "nodemon -e ts --exec \"npm run build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MNPCMW6444/neurobica-app-server.git"
+  },
+  "author": "Michael Nusair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MNPCMW6444/neurobica-app-server/issues"
+  },
+  "homepage": "https://github.com/MNPCMW6444/neurobica-app-server#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "bcryptjs": "^2.4.3",
+    "check-password-strength": "^2.0.7",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
