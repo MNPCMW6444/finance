@@ -51,7 +51,7 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
   };
 
   return (
-    <Grid container direction="column" rowSpacing={6}>
+    <Grid container direction="column" rowSpacing={6} alignItems="center">
       <Grid item container justifyContent="center" columnSpacing={0.5}>
         {Object.values(ItemTypes).map((option) => {
           const SelectButton = selectButton(option, type === option);
