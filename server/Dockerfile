@@ -2,7 +2,7 @@ FROM node:16
 
 WORKDIR /serverlp
 
-COPY package*.json .
+COPY package.json .
 
 RUN npm install
 
