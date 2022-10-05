@@ -13,6 +13,7 @@ import { Typography } from "@mui/material";
 import selectButton from "../CalendarButton/CalendarButton";
 import DateInput from "./DateInput";
 import SwitchInput from "./SwitchInput";
+import NumberInput from "./NumberInput";
 
 interface GenericFormProps {
   closeForm: () => void;
@@ -35,7 +36,7 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
 
   const handleFormSend = async () => {
     try {
-      item.type
+      item._id
         ? await Axios.put(domain + "edit" + type + "/" + itemState._id, {
             newItem: itemState,
           })
@@ -85,28 +86,40 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
                 placeHolder,
                 /* dropDownOptions, */ datePicker,
                 check,
+                min,
+                max,
+                pts,
+                dollar,
               },
               index: number
             ) => {
+              const special: boolean = !(
+                ((key === "reqTimeDay" ||
+                  key === "reqTimeMonth" ||
+                  key === "monthly") &&
+                  itemState.isOneTime) ||
+                (key === "reqTimeMonth" && itemState.monthly)
+              );
               return (
-                <Grid
-                  item
-                  container
-                  justifyContent="space-between"
-                  alignItems="center"
-                  key={index}
-                >
-                  <Grid item>
-                    <InputLabel>{label + ": "}</InputLabel>
-                  </Grid>
-                  <Grid item sx={fieldStyle}>
-                    {placeHolder ? (
-                      <TextInput
-                        placeHolder={placeHolder}
-                        dataKey={key}
-                        itemState={itemState}
-                        setItemState={setItemState}
-                      /> /* : dropDownOptions ? (
+                special && (
+                  <Grid
+                    item
+                    container
+                    justifyContent="space-between"
+                    alignItems="center"
+                    key={index}
+                  >
+                    <Grid item>
+                      <InputLabel>{label + ": "}</InputLabel>
+                    </Grid>
+                    <Grid item sx={fieldStyle}>
+                      {placeHolder ? (
+                        <TextInput
+                          placeHolder={placeHolder}
+                          dataKey={key}
+                          itemState={itemState}
+                          setItemState={setItemState}
+                        /> /* : dropDownOptions ? (
                       <SelectInput
                         dropDownOptions={dropDownOptions}
                         dataKey={key}
@@ -114,23 +127,34 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
                         setItemState={setItemState}
                       />
                     ) */
-                    ) : check ? (
-                      <SwitchInput
-                        dataKey={key}
-                        itemState={itemState}
-                        setItemState={setItemState}
-                      />
-                    ) : (
-                      datePicker && (
-                        <DateInput
+                      ) : check ? (
+                        <SwitchInput
                           dataKey={key}
                           itemState={itemState}
                           setItemState={setItemState}
                         />
-                      )
-                    )}
+                      ) : min || min === 0 ? (
+                        <NumberInput
+                          dataKey={key}
+                          itemState={itemState}
+                          setItemState={setItemState}
+                          min={min}
+                          max={max}
+                          pts={pts}
+                          dollar={dollar}
+                        />
+                      ) : (
+                        datePicker && (
+                          <DateInput
+                            dataKey={key}
+                            itemState={itemState}
+                            setItemState={setItemState}
+                          />
+                        )
+                      )}
+                    </Grid>
                   </Grid>
-                </Grid>
+                )
               );
             }
           )}

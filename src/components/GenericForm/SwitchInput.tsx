@@ -1,3 +1,4 @@
+import InputLabel from "@mui/material/InputLabel";
 import Switch from "@mui/material/Switch";
 import { Dispatch, SetStateAction } from "react";
 import { Exp } from "../../types/index";

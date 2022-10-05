@@ -6,7 +6,10 @@ const fieldMap = new Map([
         "amount",
         {
           label: "Amount",
-          placeHolder: "Insert your Ammount in USD...",
+          min: -999999999999,
+          max: 999999999999,
+          pts: 2,
+          dollar: true,
         },
       ],
       [
@@ -26,22 +29,28 @@ const fieldMap = new Map([
       [
         "monthly",
         {
-          label: "Ending Time",
-          check: "Monthly",
+          label: "Monthly?",
+          check: true,
         },
       ],
       [
         "reqTimeDay",
         {
           label: "Day",
-          datePicker: true,
+          min: 0,
+          max: 31,
+          pts: 2,
+          dollar: false,
         },
       ],
       [
         "reqTimeMonth",
         {
           label: "Month",
-          datePicker: true,
+          min: 0,
+          max: 12,
+          pts: 2,
+          dollar: false,
         },
       ],
       [

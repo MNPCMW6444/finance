@@ -1,7 +1,7 @@
 interface Exp {
   _id: string;
   type: string;
-  amount: number;
+  amount: string;
   isOneTime: boolean;
   oneTimeDate: Date;
   monthly: boolean;
