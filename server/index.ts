@@ -58,7 +58,7 @@ app.use((_, res, next) => {
 
 app.get("/areyoualive", (_, res) => res.json({ answer: "yes" }));
 
-app.post("/reqfin", async (req, res) => {
+app.post("/createExpense", async (req, res) => {
   const {
     amount,
     isOneTime,
@@ -67,7 +67,6 @@ app.post("/reqfin", async (req, res) => {
     reqTimeDay,
     reqTimeMonth,
     department,
-    more,
   } = req.body;
 
   const reqtosave = new Exp({
@@ -78,7 +77,6 @@ app.post("/reqfin", async (req, res) => {
     reqTimeDay,
     reqTimeMonth,
     department,
-    more,
   });
 
   const saved = await reqtosave.save();
