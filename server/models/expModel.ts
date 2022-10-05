@@ -17,6 +17,6 @@ const expSchema = new mongoose.Schema(
   }
 );
 
-const exp = mongoose.model("fin", expSchema);
+const exp = mongoose.model("exp", expSchema);
 
 export default exp;
