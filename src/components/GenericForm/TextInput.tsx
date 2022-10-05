@@ -1,13 +1,16 @@
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { Dispatch, SetStateAction } from "react";
-import { Item } from "../../types/index";
+import { Exp } from "../../types/index";
+import styledInputComponent from "../hoc/styledInputComponent";
 
 interface TextInputProps {
   placeHolder: string;
   dataKey: string;
-  itemState: Item;
-  setItemState: Dispatch<SetStateAction<Item>>;
+  itemState: Exp;
+  setItemState: Dispatch<SetStateAction<Exp>>;
 }
+
+const StyledOutlinedInput = styledInputComponent(OutlinedInput, true);
 
 const TextInput = ({
   placeHolder,
@@ -15,13 +18,13 @@ const TextInput = ({
   itemState,
   setItemState,
 }: TextInputProps) => (
-  <OutlinedInput
-    value={itemState[dataKey as keyof Item]}
+  <StyledOutlinedInput
+    value={itemState[dataKey as keyof Exp]}
     onChange={(
       e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
     ) => {
       const tempItem = { ...itemState };
-      tempItem[dataKey as keyof Item] = e.target.value;
+      tempItem[dataKey as keyof Exp] = e.target.value as never;
       setItemState(tempItem);
     }}
     placeholder={placeHolder}

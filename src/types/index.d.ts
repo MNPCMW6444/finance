@@ -1,4 +1,5 @@
 interface Exp {
+  _id: string;
   type: string;
   amount: number;
   isOneTime: boolean;

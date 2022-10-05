@@ -1,104 +1,54 @@
 const fieldMap = new Map([
   [
-    "Event",
+    "Expense",
     new Map([
       [
-        "title",
+        "amount",
         {
-          label: "Title",
-          placeHolder: "Insert your title here...",
+          label: "Amount",
+          placeHolder: "Insert your Ammount in USD...",
         },
       ],
       [
-        "description",
+        "isOneTime",
         {
-          label: "Description",
-          placeHolder: "Insert your description here...",
+          label: "One Time Payment?",
+          check: true,
         },
       ],
       [
-        "beginningTime",
+        "oneTimeDate",
         {
-          label: "Beginning Time",
+          label: "Date",
           datePicker: true,
         },
       ],
       [
-        "endingTime",
+        "monthly",
         {
           label: "Ending Time",
+          check: "Monthly",
+        },
+      ],
+      [
+        "reqTimeDay",
+        {
+          label: "Day",
           datePicker: true,
         },
       ],
       [
-        "color",
+        "reqTimeMonth",
         {
-          label: "color",
-          dropDownOptions: [
-            "🔴",
-            "🟠",
-            "🟡",
-            "🟢",
-            "🔵",
-            "🟣",
-            "⚫️",
-            "⚪️",
-            "🟤",
-          ],
-        },
-      ],
-      [
-        "location",
-        {
-          label: "Location",
-          placeHolder: "Insert your location here...",
-        },
-      ],
-      [
-        "notificationTime",
-        {
-          label: "Notification Time",
+          label: "Month",
           datePicker: true,
         },
       ],
-    ]),
-  ],
-  [
-    "Task",
-    new Map([
       [
-        "title",
+        "department",
         {
-          label: "Title",
-          placeHolder: "Insert your title here...",
-        },
-      ],
-      [
-        "description",
-        {
-          label: "Description",
-          placeHolder: "Insert your description here...",
-        },
-      ],
-      [
-        "estimatedTime",
-        {
-          label: "Estimated Time",
-          placeHolder: "*y *w *d *h",
-        },
-      ],
-      [
-        "status",
-        {
-          label: "Status",
-          dropDownOptions: ["Close", "In Progress", "Open"],
-        },
-      ],
-      [
-        "priority",
-        {
-          label: "Priority",
-          dropDownOptions: ["Low", "Medium", "High"],
+          label: "Department",
+          placeHolder: "Enter the department here...",
         },
       ],
     ]),

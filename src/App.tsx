@@ -9,18 +9,19 @@ import ReqForm from "./ReqForm";
 import GenericForm from "./components/GenericForm/GenericForm";
 import { Exp } from "./types";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
+const modalStyle = {
+  backgroundColor: "white",
+  position: "fixed",
+  minWidth: "540px",
+  maxWidth: "700px",
   left: "50%",
+  top: "50%",
   transform: "translate(-50%, -50%)",
-  width: "80%",
-  height: "85%",
-  bgcolor: "#FFF5DD",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-  overflow: "scroll",
+  overflowX: "hidden",
+  overflowY: "scroll",
+  "&::-webkit-scrollbar": {
+    width: "",
+  },
 };
 
 export default function App() {
@@ -62,7 +63,15 @@ export default function App() {
           }}
         >
           <Fade in={open}>
-            <Box sx={style}>
+            <Box
+              sx={modalStyle}
+              width="42vw"
+              height="80vh"
+              border="0.2rem solid #000"
+              boxShadow={24}
+              borderRadius="5vw"
+              padding="4vw"
+            >
               {/* <ReqForm closeModal={handleClose} /> */}
               <GenericForm
                 closeForm={handleClose}

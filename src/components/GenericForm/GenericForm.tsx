@@ -12,6 +12,7 @@ import SelectInput from "./SelectInput";
 import { Typography } from "@mui/material";
 import selectButton from "../CalendarButton/CalendarButton";
 import DateInput from "./DateInput";
+import SwitchInput from "./SwitchInput";
 
 interface GenericFormProps {
   closeForm: () => void;
@@ -24,7 +25,7 @@ const fieldStyle = { width: "70%" };
 const controlButtonStyle = { width: "100px" };
 
 const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
-  const [type, setType] = useState<string>(item.type || ItemTypes.task);
+  const [type, setType] = useState<string>(item.type || ItemTypes.exp);
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -78,7 +79,13 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
             ...props,
           })).map(
             (
-              { key, label, placeHolder, dropDownOptions, datePicker },
+              {
+                key,
+                label,
+                placeHolder,
+                /* dropDownOptions, */ datePicker,
+                check,
+              },
               index: number
             ) => {
               return (
@@ -99,10 +106,16 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
                         dataKey={key}
                         itemState={itemState}
                         setItemState={setItemState}
-                      />
-                    ) : dropDownOptions ? (
+                      /> /* : dropDownOptions ? (
                       <SelectInput
                         dropDownOptions={dropDownOptions}
+                        dataKey={key}
+                        itemState={itemState}
+                        setItemState={setItemState}
+                      />
+                    ) */
+                    ) : check ? (
+                      <SwitchInput
                         dataKey={key}
                         itemState={itemState}
                         setItemState={setItemState}
