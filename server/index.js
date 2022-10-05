@@ -45,8 +45,8 @@ app.use((_, res, next) => {
             .json({ serverError: "Server is down now. Please try again later." });
 });
 app.get("/areyoualive", (_, res) => res.json({ answer: "yes" }));
-app.post("/reqfin", async (req, res) => {
-    const { amount, isOneTime, oneTimeDate, monthly, reqTimeDay, reqTimeMonth, department, more, } = req.body;
+app.post("/createExpense", async (req, res) => {
+    const { amount, isOneTime, oneTimeDate, monthly, reqTimeDay, reqTimeMonth, department, } = req.body;
     const reqtosave = new expModel_1.default({
         amount,
         isOneTime,
@@ -55,7 +55,6 @@ app.post("/reqfin", async (req, res) => {
         reqTimeDay,
         reqTimeMonth,
         department,
-        more,
     });
     const saved = await reqtosave.save();
     res.json(saved);
