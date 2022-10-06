@@ -12,7 +12,7 @@ import { Exp } from "./types";
 const modalStyle = {
   backgroundColor: "white",
   position: "fixed",
-  minWidth: "300px",
+  minWidth: "540px",
   maxWidth: "700px",
   left: "50%",
   top: "50%",
@@ -65,7 +65,7 @@ export default function App() {
           <Fade in={open}>
             <Box
               sx={modalStyle}
-              width="84vw"
+              width="42vw"
               height="80vh"
               border="0.2rem solid #000"
               boxShadow={24}
