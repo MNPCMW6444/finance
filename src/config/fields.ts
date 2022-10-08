@@ -60,6 +60,13 @@ const fieldMap = new Map([
           placeHolder: "Enter the department here...",
         },
       ],
+      [
+        "more",
+        {
+          label: "Description",
+          placeHolder: "Enter the description here...",
+        },
+      ],
     ]),
   ],
 ]);
