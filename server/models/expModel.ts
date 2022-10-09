@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const expSchema = new mongoose.Schema(
   {
     amount: Number,
-    isOneTime: Boolean,
+    isOneTime: { Boolean, required: false },
     oneTimeDate: Date,
-    monthly: Boolean,
+    monthly: { Boolean, required: false },
     reqTimeDay: Number,
     reqTimeMonth: Number,
     department: String,

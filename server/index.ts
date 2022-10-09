@@ -67,7 +67,7 @@ app.post("/createExpense", async (req, res) => {
     reqTimeDay,
     reqTimeMonth,
     department,
-  } = req.body;
+  } = req.body.newItem;
 
   const reqtosave = new Exp({
     amount,
