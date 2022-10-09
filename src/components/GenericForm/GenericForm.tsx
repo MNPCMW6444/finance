@@ -98,7 +98,8 @@ const GenericForm = ({ closeForm, item, refresh }: GenericFormProps) => {
                   key === "reqTimeMonth" ||
                   key === "monthly") &&
                   itemState.isOneTime) ||
-                (key === "reqTimeMonth" && itemState.monthly)
+                (key === "reqTimeMonth" && itemState.monthly) ||
+                (key === "oneTimeDate" && !itemState.isOneTime)
               );
               return (
                 special && (

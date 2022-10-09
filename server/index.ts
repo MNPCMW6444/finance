@@ -87,5 +87,5 @@ app.post("/createExpense", async (req, res) => {
 app.get("/finnum", async (req, res) => {
   const re = await Exp.find();
 
-  res.json({ r: re.length });
+  res.json({ r: re });
 });

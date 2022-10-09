@@ -8,8 +8,25 @@ import Button from "@mui/material/Button";
 import ReqForm from "./ReqForm";
 import GenericForm from "./components/GenericForm/GenericForm";
 import { Exp } from "./types";
+import Tablea from "./Tablea";
 
 const modalStyle = {
+  backgroundColor: "white",
+  position: "fixed",
+  minWidth: "540px",
+  maxWidth: "700px",
+  left: "50%",
+  top: "50%",
+  transform: "translate(-50%, -50%)",
+  overflowX: "hidden",
+  overflowY: "scroll",
+  "&::-webkit-scrollbar": {
+    width: "",
+  },
+};
+
+const modalStyle2 = {
+  overflow: "scroll",
   backgroundColor: "white",
   position: "fixed",
   minWidth: "540px",
@@ -28,6 +45,10 @@ export default function App() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [open2, setOpen2] = useState(false);
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
 
   return (
     <Grid
@@ -50,6 +71,20 @@ export default function App() {
           onClick={handleOpen}
         >
           Fill a new Budget Request
+        </Button>
+      </Grid>
+      <Grid item>
+        <Button
+          sx={{
+            backgroundColor: "orange",
+            color: "black",
+            fontSize: "1.1rem",
+            borderRadius: "10px",
+            fontWeight: 900,
+          }}
+          onClick={handleOpen2}
+        >
+          See Exists
         </Button>
       </Grid>
       <Grid item>
@@ -78,6 +113,32 @@ export default function App() {
                 item={{} as Exp}
                 refresh={() => {}}
               />
+            </Box>
+          </Fade>
+        </Modal>
+      </Grid>
+      <Grid item>
+        <Modal
+          open={open2}
+          onClose={handleClose2}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open2}>
+            <Box
+              sx={modalStyle2}
+              width="42vw"
+              height="80vh"
+              border="0.2rem solid #000"
+              boxShadow={24}
+              borderRadius="5vw"
+              padding="4vw"
+            >
+              {/* <ReqForm closeModal={handleClose} /> */}
+              <Tablea />
             </Box>
           </Fade>
         </Modal>
