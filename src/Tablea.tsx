@@ -2,6 +2,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import domain from "./domain";
@@ -11,7 +12,6 @@ export default function Tablea({ realmode }: any) {
 
   useEffect(() => {
     const da = async () => {
-      debugger;
       const c = await axios.get(domain + (realmode ? "finnumR" : "finnum"));
       b(c.data.r);
     };
@@ -26,11 +26,13 @@ export default function Tablea({ realmode }: any) {
       </TableHead>
       <TableBody>
         {a.length > 0 &&
-          a.map((row) =>
-            Object.values(row).map((value) => (
-              <TableCell>{value + ""}</TableCell>
-            ))
-          )}
+          a.map((row) => (
+            <TableRow>
+              {Object.values(row).map((value) => (
+                <TableCell>{value + ""}</TableCell>
+              ))}
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );
