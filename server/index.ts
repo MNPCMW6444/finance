@@ -6,6 +6,9 @@ import cookieParser from "cookie-parser";
 
 import Exp from "./models/expModel";
 
+import MercuryExp from "./models/mercuryExp";
+import axios from "axios";
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -88,4 +91,44 @@ app.get("/finnum", async (req, res) => {
   const re = await Exp.find();
 
   res.json({ r: re });
+});
+
+app.get("/finnumR", async (req, res) => {
+  const re = await MercuryExp.find();
+
+  res.json({ r: re });
+});
+
+app.get("/refresh", async (_, res) => {
+  try {
+    const accountId = (
+      await axios.get("https://api.mercury.com/api/v1/accounts", {
+        headers: {
+          Authorization: "Bearer o31n/gdCYjUvTK8NJl6Zfr/Y7Mp+wz77ERH7fhzdkEGf",
+        },
+      })
+    ).data.accounts[0].id;
+
+    const transns = await axios.get(
+      "https://api.mercury.com/api/v1/account/" +
+        accountId +
+        "/transactions?start=2021-01-01",
+      {
+        headers: {
+          Authorization: "Bearer o31n/gdCYjUvTK8NJl6Zfr/Y7Mp+wz77ERH7fhzdkEGf",
+        },
+      }
+    );
+
+    await transns.data.transactions.forEach(
+      async (element: typeof MercuryExp) => {
+        const newTrans = new MercuryExp(element);
+        await newTrans.save();
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    return res.json({ err: e });
+  }
+  return res.json({ Message: "Refresh done good!" });
 });

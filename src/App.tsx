@@ -43,11 +43,17 @@ const modalStyle2 = {
 
 export default function App() {
   const [open, setOpen] = useState(false);
+
+  const [realmode, setrealmode] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [open2, setOpen2] = useState(false);
-  const handleOpen2 = () => setOpen2(true);
+  const handleOpen2 = (i: boolean) => {
+    setOpen2(true);
+    setrealmode(i);
+  };
   const handleClose2 = () => setOpen2(false);
 
   return (
@@ -82,9 +88,23 @@ export default function App() {
             borderRadius: "10px",
             fontWeight: 900,
           }}
-          onClick={handleOpen2}
+          onClick={() => handleOpen2(false)}
         >
-          See Exists
+          See Existing Reuests
+        </Button>
+      </Grid>
+      <Grid item>
+        <Button
+          sx={{
+            backgroundColor: "orange",
+            color: "black",
+            fontSize: "1.1rem",
+            borderRadius: "10px",
+            fontWeight: 900,
+          }}
+          onClick={() => handleOpen2(true)}
+        >
+          See Existing Actual tnxses
         </Button>
       </Grid>
       <Grid item>
@@ -138,7 +158,7 @@ export default function App() {
               padding="4vw"
             >
               {/* <ReqForm closeModal={handleClose} /> */}
-              <Tablea />
+              <Tablea realmode={realmode} />
             </Box>
           </Fade>
         </Modal>

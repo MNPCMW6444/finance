@@ -6,12 +6,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import domian from "./domian";
 
-export default function Tablea() {
+export default function Tablea({ realmode }: any) {
   const [a, b] = useState([]);
 
   useEffect(() => {
     const da = async () => {
-      const c = await axios.get(domian + "finnum");
+      const c = await axios.get(domian + realmode ? "finnumR" : "finnum");
       b(c.data.r);
     };
 
