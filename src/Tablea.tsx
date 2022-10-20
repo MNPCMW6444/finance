@@ -4,14 +4,15 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import domian from "./domian";
+import domain from "./domain";
 
 export default function Tablea({ realmode }: any) {
   const [a, b] = useState([]);
 
   useEffect(() => {
     const da = async () => {
-      const c = await axios.get(domian + realmode ? "finnumR" : "finnum");
+      debugger;
+      const c = await axios.get(domain + (realmode ? "finnumR" : "finnum"));
       b(c.data.r);
     };
 

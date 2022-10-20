@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
 import { useState } from "react";
-import domain from "./domian";
+import domain from "./domain";
 
 interface GenericFormProps {
   closeModal: Function;
