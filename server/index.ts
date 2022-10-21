@@ -120,6 +120,8 @@ app.get("/refresh", async (_, res) => {
       }
     );
 
+    await MercuryExp.collection.drop();
+
     await transns.data.transactions.forEach(
       async (element: typeof MercuryExp) => {
         const newTrans = new MercuryExp(element);
